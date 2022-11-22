@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
-html{
+
+html {
     min-height: 100%;
 }
-body{
+
+body {
     font-family: 'Manrope', sans-serif;
     background-image: url("pic4.jpg");
     background-size: cover;
@@ -15,7 +17,8 @@ body{
     /* overflow: hidden; */
     /* min-height: 100%; */
 }
-.buttons{
+
+.buttons {
     position: absolute;
     /* background-color: grey; */
     width: 100%;
@@ -24,13 +27,12 @@ body{
     z-index: 999;
     /* position: fixed; */
 }
-a{
-    /* background-color: rgb(198, 255, 192); */
+
+/* a{
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-attachment: fixed;
-    /* line-height: 100vh; */
     line-height: 50px;
     border-radius: 1px;
     border: 1px solid #000;
@@ -38,7 +40,6 @@ a{
     display: block;
     text-decoration: none;
     font-size: 30px;
-    /* font-weight: 700; */
     width: 90%;
     margin: 10px auto;
     background: none;
@@ -49,12 +50,43 @@ a{
     transition: 1s;
     box-shadow: 0 0 50px #ffffff77;
     background: #00000033;
+} */
+
+a {
+    display: block;
+    background-color: #ffffff99;
+    border: 2px solid #222;
+    box-shadow: 3px 3px 0px #222;
+    width: 90%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 5px;
+    max-width: 600px;
+    margin: auto;
+    transition: .3s;
 }
-a:nth-child(2){
-    /* font-size: 100px; */
-    /* background-color: lightblue; */
+
+a:first-child {
+    margin-bottom: 10px;
 }
-.sliderContainer{
+
+a:hover {
+    box-shadow: 0 0 20px gold;
+    border: 2px solid gold;
+}
+
+a:hover img {
+    transform: scale(1) rotate(-5deg);
+}
+
+a img {
+    transition: 0.5s;
+    width: 100%;
+    transform: scale(0.8);
+    filter: drop-shadow(0 0 5px white);
+}
+
+.sliderContainer {
     position: absolute;
     top: 0;
     left: 0;
@@ -62,18 +94,16 @@ a:nth-child(2){
     height: 100%;
     overflow: hidden;
 }
-.slider{
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* width: 100%; */
-    /* display: none; */
-    /* height: 90vh; */
-    /* overflow-y: scroll; */
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
-.slider img{
+
+.slider img {
     width: 100%;
     display: block;
-    /* height: 400px; */
-    object-fit: cover;
+    transform: scale(1.01);
 }

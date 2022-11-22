@@ -1,9 +1,10 @@
 let slider = document.getElementsByClassName("slider")[0];
 let pics = [];
-let imgs, control;
+let dist = 0;
+let shift = 0;
 
-for (let i = 0; i < 13; i++) {
-    pics.push("pic" + 3 + ".jpg")
+for (let i = 0; i < 5; i++) {
+    pics.push("img"+i+".jpg")
 }
 
 for (let i = pics.length - 1; i > 0; i--) {
@@ -13,32 +14,34 @@ for (let i = pics.length - 1; i > 0; i--) {
     pics[randomNumber] = temporary
 }
 
-for (let i = 0; i < 13; i++) {
-    let img = document.createElement("img");
-    img.src = pics[i]
-    img.classList.add("sliderPic")
-    slider.appendChild(img)
-
+for (let i = 0; i < 10; i++) {
+    const image = new Image();
+    image.src = pics[i%5];
+    slider.appendChild(image)
+    image.onload = function () {
+        if (i < 5) {
+            shift += image.offsetHeight;
+        }
+    }
 }
 
-let dist = 0;
-let counter = 0;
+window.onresize = () => {
+    dist = 0;
+    shift = 0;
+    let images = slider.getElementsByTagName("img");
+    for (let i = 0; i < 5; i++) {
+        shift += images[i].offsetHeight;
+    }
+    slider.style.transform = "translateY(-" + dist + "px)";
+}
 
-setTimeout(() => {
-    imgs = document.getElementsByClassName("sliderPic");
-    control = imgs[0].offsetHeight;
-    setInterval(() => {
-        dist = dist + 0.1;
-        slider.style.transform = "translateY(-" + dist + "px)";
-        console.log(dist, counter);
-        
-        if (dist == control) {
-            counter++;
-            control = imgs[counter].offsetHeight;
-            dist = 0;
-            slider.appendChild(imgs[0])
-        }
-    }, 20)
-}, 1000)
-
+function repeatOften() {
+    dist += 0.5;
+    if (dist >= shift) {
+        dist = 0;
+    }
+    slider.style.transform = "translateY(-" + dist + "px)";
+    requestAnimationFrame(repeatOften);
+}
+requestAnimationFrame(repeatOften);
 
